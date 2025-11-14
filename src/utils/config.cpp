@@ -4,6 +4,7 @@
 #include <iostream>
 #include <algorithm>
 #include <cctype>
+#include <iomanip>
 
 bool Config::LoadFromFile(const std::string& filename) {
     std::ifstream file(filename);
