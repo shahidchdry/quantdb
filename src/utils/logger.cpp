@@ -6,6 +6,15 @@
 #include <thread>
 #include <filesystem>
 
+// Add compatibility header for older compilers
+#if __has_include(<filesystem>)
+#include <filesystem>
+namespace fs = std::filesystem;
+#else
+#include <experimental/filesystem>
+namespace fs = std::experimental::filesystem;
+#endif
+
 std::unique_ptr<Logger> Logger::instance_;
 std::mutex Logger::instance_mutex_;
 
