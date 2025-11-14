@@ -56,10 +56,10 @@ void Logger::SetConfig(const LogConfig& config) {
     // Open new log file if specified
     if (!config_.file_path.empty()) {
         // Create directory if it doesn't exist
-        std::filesystem::path file_path(config_.file_path);
-        std::filesystem::path dir_path = file_path.parent_path();
-        if (!dir_path.empty() && !std::filesystem::exists(dir_path)) {
-            std::filesystem::create_directories(dir_path);
+        fs::path file_path(config_.file_path);
+        fs::path dir_path = file_path.parent_path();
+        if (!dir_path.empty() && !fs::exists(dir_path)) {
+            fs::create_directories(dir_path);
         }
 
         log_file_.open(config_.file_path, std::ios::app);
