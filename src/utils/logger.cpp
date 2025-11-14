@@ -169,16 +169,16 @@ void Logger::RotateLogFile() {
 
         if (i == static_cast<int>(config_.max_files) - 1) {
             // Delete the oldest log file
-            std::filesystem::remove(old_file);
+            fs::remove(old_file);
         } else {
             new_file = config_.file_path + "." + std::to_string(i + 1);
-            std::filesystem::rename(old_file, new_file);
+            fs::rename(old_file, new_file);
         }
     }
 
     // Move current log file to .1
     std::string backup_file = config_.file_path + ".1";
-    std::filesystem::rename(config_.file_path, backup_file);
+    fs::rename(config_.file_path, backup_file);
 
     // Create new log file
     log_file_.open(config_.file_path, std::ios::app);
